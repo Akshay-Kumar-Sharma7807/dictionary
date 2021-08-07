@@ -13,3 +13,27 @@ form {
 form:hover, form:focus {
   box-shadow: 0 0px 8px hsla(0, 0%, 58%, 0.7) !important;
 }
+.auto-sizer {
+  margin: 20px 0;
+  padding: 10px;
+
+}
+.row{
+  padding: 6px 10px;
+  align-items: center;
+  text-align: center;
+  border-bottom: 1px solid red;
+  /* margin: 10px; */
+
+}
+.container {
+  /* margin: 0 !important; */
+  overflow: hidden;
+  min-height: calc(100vh - 64px);
+}
+.display {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: row;
+}

@@ -44,16 +44,17 @@ export default function CustomizedInputBase() {
   const classes = useStyles();
   const [search, setSearch] = useState("");
   const [result, setResult] = useState([]);
-  // const history = useHistory();
+  const history = useHistory();
 
   const searchWord = (e) => {
     e.preventDefault();
     // history.push(`/dictionary/${search}`);
-    Axios.get(
-      `https://api.dictionaryapi.dev/api/v2/entries/en_US/${search}`
-    ).then((res) => {
-      setResult(res.data);
-    });
+    // Axios.get(
+    //   `https://api.dictionaryapi.dev/api/v2/entries/en_US/${search}`
+    // ).then((res) => {
+    //   setResult(res.data);
+    // });
+    history.push("/defination/" + search);
   };
 
   return (
@@ -97,16 +98,7 @@ export default function CustomizedInputBase() {
           <Typography>Language</Typography>
         </Button>
       </Paper>
-      {result.length ? (
-        <>
-          {/* {result.map((meaning, index) => (
-            <h1 key={index}>{meaning.word}</h1>
-          ))} */}
-          <List result={result} />
-        </>
-      ) : (
-        <h1>Find something new</h1>
-      )}
+      <List search={search} />
     </>
   );
 }

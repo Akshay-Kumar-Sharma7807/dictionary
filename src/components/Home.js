@@ -4,7 +4,7 @@ import Input from "./Input";
 
 export default function Home() {
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" className="container">
       <Typography
         variant="h3"
         component="h1"
