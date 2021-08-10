@@ -9,12 +9,14 @@ import {
   CardActions,
   CardContent,
   Button,
+  CardMedia,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    marginTop: 20,
   },
   bullet: {
     display: "inline-block",
@@ -47,7 +49,7 @@ export default function Definations() {
     <Container maxWidth="md">
       {results &&
         results.map((result, index) => (
-          <Card className={classes.root}>
+          <Card className={classes.root} elevation={5}>
             <CardContent>
               <Typography variant="h5" component="h2">
                 {result.word}
@@ -59,6 +61,13 @@ export default function Definations() {
               >
                 {result.phonetic}
               </Typography>
+              <CardMedia>
+                <audio controls>
+                  <source src={result.phonetics[0].audio} />
+                  {/* <source src="horse.mp3" type="audio/mpeg"> */}
+                  Your browser does not support the audio element.
+                </audio>
+              </CardMedia>
               <Typography className={classes.pos} color="textSecondary">
                 {result.meanings.map((meaning, index) => {
                   if (index == result.meanings.length - 1) {

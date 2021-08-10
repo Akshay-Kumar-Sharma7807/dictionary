@@ -18,6 +18,7 @@ import ColorLensIcon from "@material-ui/icons/ColorLens";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
+import ColorPicker from "./ColorPicker";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -31,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SwipeableTemporaryDrawer() {
+export default function SwipeableTemporaryDrawer({ setColor, setShowPicker }) {
   const classes = useStyles();
   const [state, setState] = React.useState({ left: false });
+
   const [menu, setMenu] = React.useState({
     Inbox: "<InboxIcon />",
     Starred: "<InboxIcon />",
@@ -79,7 +81,7 @@ export default function SwipeableTemporaryDrawer() {
           </ListItem>
         </Link>
         <Link to="/">
-          <ListItem button>
+          <ListItem button onClick={() => setShowPicker(true)}>
             <ListItemIcon>
               <ColorLensIcon />
             </ListItemIcon>

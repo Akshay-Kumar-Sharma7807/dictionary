@@ -9,6 +9,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import Drawer from "./Drawer";
+import ColorPicker from "./ColorPicker";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,10 +23,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+export default function MenuAppBar({ setColor }) {
   const classes = useStyles();
   const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [showPicker, setShowPicker] = React.useState(false);
   const open = Boolean(anchorEl);
 
   const handleMenu = (event) => {
@@ -48,7 +50,7 @@ export default function MenuAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Drawer />
+          <Drawer setColor={setColor} setShowPicker={setShowPicker} />
           <Typography variant="h6" className={classes.title}>
             Dictionary
           </Typography>
@@ -85,6 +87,13 @@ export default function MenuAppBar() {
           )}
         </Toolbar>
       </AppBar>
+      {showPicker && (
+        <ColorPicker
+          setColor={setColor}
+          setShowPicker={setShowPicker}
+          // setShowPicker={setShowPicker}
+        />
+      )}
     </div>
   );
 }

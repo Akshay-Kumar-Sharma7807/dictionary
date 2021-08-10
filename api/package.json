@@ -14,8 +14,10 @@
   "author": "Akshay Kumar Sharma",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "mongoose": "^5.13.5",
     "nodemon": "^2.0.12",
     "word-list": "^3.1.0"
   }
