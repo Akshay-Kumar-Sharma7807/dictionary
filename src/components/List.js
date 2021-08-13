@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 // import List from "@material-ui/core/List";
 // import ListItem from "@material-ui/core/ListItem";
 // import ListItemText from "@material-ui/core/ListItemText";
-import Divider from "@material-ui/core/Divider";
 import Axios from "axios";
 import { FixedSizeList } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { Typography, List, ListItem, ListItemText } from "@material-ui/core";
+import { ListItem, ListItemText } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
-  },
-}));
+// const useStyles = makeStyles((theme) => ({
+//   root: {
+//     width: "100%",
+//     maxWidth: 360,
+//     backgroundColor: theme.palette.background.paper,
+//   },
+// }));
 
 export default function ListDividers(props) {
   const [words, setWords] = useState();
@@ -29,7 +28,7 @@ export default function ListDividers(props) {
       }
     );
   }, [props.search]);
-  const classes = useStyles();
+  // const classes = useStyles();
   // const {
   //   getRootProps,
   //   getInputLabelProps,
@@ -60,7 +59,8 @@ export default function ListDividers(props) {
 
   return (
     <AutoSizer className="auto-sizer">
-      {({ height, width }) => {
+      {({ height, width }) =>
+      // {
         {
           return (
             words && (
@@ -76,7 +76,7 @@ export default function ListDividers(props) {
               </FixedSizeList>
             )
           );
-        }
+        // }
       }}
     </AutoSizer>
   );

@@ -3,14 +3,15 @@ import { useParams } from "react-router-dom";
 import Axios from "axios";
 import {
   Container,
-  Paper,
   Typography,
   Card,
   CardActions,
   CardContent,
   Button,
   CardMedia,
+
 } from "@material-ui/core";
+import {Skeleton} from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -47,6 +48,22 @@ export default function Definations() {
   }, []);
   return (
     <Container maxWidth="md">
+      {!results && (
+        <Card className={classes.root} elevation={5}>
+          <CardContent>
+          <Typography variant='h4'>
+            <Skeleton variant="text" width={180} />
+          </Typography>
+          <Typography variant='h6'>
+            <Skeleton variant="text" width={150} />
+          </Typography>
+          <Typography variant='h5' style={{borderRadius: '50px'}} >
+            <Skeleton width={140} />
+          </Typography>
+          <Skeleton variant="rect" height={60} />
+          </CardContent>
+        </Card>
+      )}
       {results &&
         results.map((result, index) => (
           <Card className={classes.root} elevation={5}>
@@ -70,7 +87,7 @@ export default function Definations() {
               </CardMedia>
               <Typography className={classes.pos} color="textSecondary">
                 {result.meanings.map((meaning, index) => {
-                  if (index == result.meanings.length - 1) {
+                  if (index === result.meanings.length - 1) {
                     return meaning.partOfSpeech;
                   }
                   return meaning.partOfSpeech + " - ";

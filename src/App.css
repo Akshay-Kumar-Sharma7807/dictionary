@@ -44,14 +44,26 @@ form:hover, form:focus {
   width: 100vw;
   height: 100vh;
   z-index: 4;
-  background: hsla(0, 0%, 30%, 0.80)
+  background: rgba(0, 0, 0,0.6);
 }
+
+.color-picker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
 .twitter-picker {
   z-index: 5;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
 }
 
 .avatar {
@@ -62,4 +74,23 @@ form:hover, form:focus {
 .wrapper {
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 600px){
+  .container {
+    min-height: calc(100vh - 48px) ;
+  }
+  .hide-on-small {
+    display: none;
+  }
+}
+@media only screen and (max-width: 506px){
+  @media only screen and (max-height: 448px){
+    .container{
+      min-height: calc(100vh - 48px) !important;
+     }
+  }
+  .container {
+    min-height: calc(100vh - 56px) ;
+  }
 }

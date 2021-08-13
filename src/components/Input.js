@@ -16,7 +16,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import ClearIcon from "@material-ui/icons/Clear";
 import TranslateIcon from "@material-ui/icons/Translate";
 import { useHistory } from "react-router-dom";
-import Axios from "axios";
 import List from "./List";
 
 const useStyles = makeStyles((theme) => ({
@@ -43,7 +42,6 @@ const useStyles = makeStyles((theme) => ({
 export default function CustomizedInputBase() {
   const classes = useStyles();
   const [search, setSearch] = useState("");
-  const [result, setResult] = useState([]);
   const history = useHistory();
 
   const searchWord = (e) => {
@@ -59,12 +57,14 @@ export default function CustomizedInputBase() {
 
   return (
     <>
-      <Paper component="form" className={classes.root} onSubmit={searchWord}>
+      <Paper component="form" className={classes.root} onSubmit={searchWord} elevation={1}>
         <InputBase
           className={classes.input}
           placeholder="Search Dictionary"
           inputProps={{ "aria-label": "search dictionary" }}
+          required
           value={search}
+          autoFocus
           onChange={(e) => {
             setSearch(e.target.value);
           }}
@@ -95,7 +95,7 @@ export default function CustomizedInputBase() {
           aria-label="languages"
           startIcon={<TranslateIcon />}
         >
-          <Typography>Language</Typography>
+          <Typography className='hide-on-small'>Language</Typography>
         </Button>
       </Paper>
       <List search={search} />

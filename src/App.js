@@ -3,12 +3,15 @@ import Header from "./components/Header";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import Routes from "./Routes";
 import { BrowserRouter as Router } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const [color, setColor] = useState(
     localStorage.getItem("themeColor") || "#ff0000"
   );
+
+  const [dark,setDark] = useState(localStorage.getItem('dark'));
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -19,6 +22,7 @@ function App() {
         main: "#f44336",
         contrastText: "#000",
       },
+      type: dark ? "dark":"light",
     },
   });
 
@@ -26,7 +30,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router>
         <Header setColor={setColor} />
-        <Routes />
+        <Routes setDark={setDark} dark={dark} />
       </Router>
     </ThemeProvider>
   );

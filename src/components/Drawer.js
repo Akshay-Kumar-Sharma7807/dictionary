@@ -8,8 +8,6 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
@@ -18,7 +16,6 @@ import ColorLensIcon from "@material-ui/icons/ColorLens";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import SettingsIcon from "@material-ui/icons/Settings";
 import { Link } from "react-router-dom";
-import ColorPicker from "./ColorPicker";
 
 const useStyles = makeStyles((theme) => ({
   list: {
@@ -35,13 +32,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SwipeableTemporaryDrawer({ setColor, setShowPicker }) {
   const classes = useStyles();
   const [state, setState] = React.useState({ left: false });
-
-  const [menu, setMenu] = React.useState({
-    Inbox: "<InboxIcon />",
-    Starred: "<InboxIcon />",
-    "Send email": "<InboxIcon />",
-    Drafts: "<InboxIcon />",
-  });
 
   const toggleState = (newState) => (event) => {
     if (
