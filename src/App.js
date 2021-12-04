@@ -10,7 +10,7 @@ function App() {
     localStorage.getItem("themeColor") || "#ff0000"
   );
 
-  const [dark,setDark] = useState(localStorage.getItem('dark'));
+  const [dark, setDark] = useState(localStorage.getItem("dark") === 'true' ? true : false);
 
   const theme = createTheme({
     palette: {
@@ -22,7 +22,7 @@ function App() {
         main: "#f44336",
         contrastText: "#000",
       },
-      type: dark ? "dark":"light",
+      type: dark ? "dark" : "light",
     },
   });
 

@@ -11,7 +11,7 @@ import {
   CardMedia,
 
 } from "@material-ui/core";
-import {Skeleton} from '@material-ui/lab'
+import { Skeleton } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -51,16 +51,16 @@ export default function Definations() {
       {!results && (
         <Card className={classes.root} elevation={5}>
           <CardContent>
-          <Typography variant='h4'>
-            <Skeleton variant="text" width={180} />
-          </Typography>
-          <Typography variant='h6'>
-            <Skeleton variant="text" width={150} />
-          </Typography>
-          <Typography variant='h5' style={{borderRadius: '50px'}} >
-            <Skeleton width={140} />
-          </Typography>
-          <Skeleton variant="rect" height={60} />
+            <Typography variant='h4'>
+              <Skeleton variant="text" width={180} />
+            </Typography>
+            <Typography variant='h6'>
+              <Skeleton variant="text" width={150} />
+            </Typography>
+            <Typography variant='h5' style={{ borderRadius: '50px' }} >
+              <Skeleton width={140} />
+            </Typography>
+            <Skeleton variant="rect" height={60} />
           </CardContent>
         </Card>
       )}
@@ -99,9 +99,9 @@ export default function Definations() {
                 {result.meanings[0].definitions[0].example}
               </Typography>
             </CardContent>
-            <CardActions>
-              <Button size="small">Learn More</Button>
-            </CardActions>
+            {/* <CardActions>
+              <Button size="small" href={}>Learn More</Button>
+            </CardActions> */}
           </Card>
         ))}
     </Container>

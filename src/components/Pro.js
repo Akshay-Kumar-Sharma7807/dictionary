@@ -38,6 +38,9 @@ export default function Settings() {
   return (
     <div className={classes.wrapper}>
       <Container maxWidth="md">
+        <Paper color="secondary" style={{ padding: "10px" }}>
+          <Typography>There is no Pro version currently.</Typography>
+        </Paper>
         <Paper elevation={3} className={classes.paper}>
           <Typography variant="h3" component="h1" align="center" gutterBottom>
             Upgrade to Pro

@@ -94,3 +94,9 @@ form:hover, form:focus {
     min-height: calc(100vh - 56px) ;
   }
 }
+
+
+
+.list {
+  height: 100%;
+}

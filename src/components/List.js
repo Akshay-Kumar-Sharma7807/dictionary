@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { FixedSizeList } from "react-window";
 import AutoSizer from "react-virtualized-auto-sizer";
-import { ListItem, ListItemText } from "@material-ui/core";
+import { List, ListItem, ListItemText } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
 // const useStyles = makeStyles((theme) => ({
@@ -58,6 +58,7 @@ export default function ListDividers(props) {
   );
 
   return (
+    <List className="list">
     <AutoSizer className="auto-sizer">
       {({ height, width }) =>
       // {
@@ -65,7 +66,7 @@ export default function ListDividers(props) {
           return (
             words && (
               <FixedSizeList
-                height={400}
+                height={height}
                 itemCount={words.length}
                 itemSize={35}
                 width={width}
@@ -79,5 +80,6 @@ export default function ListDividers(props) {
         // }
       }}
     </AutoSizer>
+    </List>
   );
 }
