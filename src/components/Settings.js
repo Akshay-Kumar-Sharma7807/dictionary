@@ -7,8 +7,6 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Switch from '@material-ui/core/Switch';
-import WifiIcon from '@material-ui/icons/Wifi';
-import BluetoothIcon from '@material-ui/icons/Bluetooth';
 import { Container, Card } from '@material-ui/core';
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness3Icon from '@material-ui/icons/Brightness3';

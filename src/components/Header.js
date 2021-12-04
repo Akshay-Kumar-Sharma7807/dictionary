@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MenuAppBar({ setColor }) {
   const classes = useStyles();
-  const [auth, setAuth] = React.useState(false);
+  const [auth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [showPicker, setShowPicker] = React.useState(false);
   const open = Boolean(anchorEl);
@@ -90,7 +90,7 @@ export default function MenuAppBar({ setColor }) {
         <ColorPicker
           setColor={setColor}
           setShowPicker={setShowPicker}
-          // setShowPicker={setShowPicker}
+        // setShowPicker={setShowPicker}
         />
       )}
     </div>
