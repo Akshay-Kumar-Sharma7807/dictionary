@@ -1,9 +1,9 @@
 console.log("hello from service worker");
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/6.1.5/workbox-sw.js');
-const {strategies} = workbox;
+const { strategies } = workbox;
 const { NetworkFirst,
   StaleWhileRevalidate,
-  CacheFirst} = strategies;
+  CacheFirst } = strategies;
 
 const { CacheableResponsePlugin } = workbox.cacheableResponse;
 const { ExpirationPlugin } = workbox.expiration;
