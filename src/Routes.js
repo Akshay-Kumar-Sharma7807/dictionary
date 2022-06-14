@@ -6,6 +6,7 @@ import About from "./components/About";
 import Settings from "./components/Settings";
 import Pro from "./components/Pro";
 import { useTheme } from '@material-ui/core/styles';
+// import Share from "./components/Share.js";
 
 export default function Routes(props) {
   const theme = useTheme();
@@ -28,6 +29,9 @@ export default function Routes(props) {
         <Route path="/pro" exact>
           <Pro />
         </Route>
+        {/* <Route path="/share" exact>
+          <Share />
+        </Route> */}
       </div>
     </Switch>
   );

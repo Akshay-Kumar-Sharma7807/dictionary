@@ -15,6 +15,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import ColorLensIcon from "@material-ui/icons/ColorLens";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import SettingsIcon from "@material-ui/icons/Settings";
+import Share from "./Share";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -114,6 +115,18 @@ export default function SwipeableTemporaryDrawer({ setColor, setShowPicker }) {
           </ListItem>
         </Link>
       </List>
+      <Divider />
+      <Share />
+      {/* <List>
+        <Link to="/share">
+          <ListItem button>
+            <ListItemIcon>
+              <ShareIcon />
+            </ListItemIcon>
+            <ListItemText primary="Share" />
+          </ListItem>
+        </Link>
+      </List> */}
     </div>
   );
 

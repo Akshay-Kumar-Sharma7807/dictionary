@@ -7,10 +7,12 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Button,
 
 } from "@material-ui/core";
 import { Skeleton } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles";
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 
 const useStyles = makeStyles({
   root: {
@@ -28,6 +30,16 @@ const useStyles = makeStyles({
   pos: {
     marginBottom: 12,
   },
+  phonetic: {
+    display: "flex",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    fontSize: "1.2rem",
+    lineHeight: "1.2rem"
+  },
+  "phonetic:hover": {
+    color: "red",
+  }
 });
 
 export default function Definations() {
@@ -44,10 +56,23 @@ export default function Definations() {
       console.log(res.data);
     });
   }, []);
+
+  const playSound = (e, url) => {
+    if (!url) {
+      return
+    }
+
+    let audio = new Audio(url)
+    audio.addEventListener("canplaythrough", event => {
+      /* the audio is now playable; play it if permissions allow */
+      audio.play();
+    });
+  }
+
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" style={{ padding: "0 0 1rem 0" }}>
       {!results && (
-        <Card className={classes.root} elevation={5}>
+        <Card className={classes.root} elevation={5} gutterBottom>
           <CardContent>
             <Typography variant='h4'>
               <Skeleton variant="text" width={180} />
@@ -67,42 +92,67 @@ export default function Definations() {
           <Card className={classes.root} elevation={5}>
             <CardContent>
               <Typography variant="h5" component="h2">
-                {result.word}
+                {result.word[0].toUpperCase() + result.word.substring(1)}
               </Typography>
-              <Typography
+              {/* <Typography
                 className={classes.title}
                 color="textSecondary"
                 gutterBottom
               >
                 {result.phonetic}
-              </Typography>
-              <CardMedia>
-                <audio controls>
-                  <source src={result.phonetics[0].audio} />
-                  {/* <source src="horse.mp3" type="audio/mpeg"> */}
-                  Your browser does not support the audio element.
-                </audio>
-              </CardMedia>
-              <Typography className={classes.pos} color="textSecondary">
+              </Typography> */}
+              {
+                result.phonetics.map((phonetic) => {
+
+                  return (
+                    <Button className={classes.phonetic} startIcon={<PlayArrowIcon />}>
+                      <Typography className={classes.title} color="textSecondary" onClick={(e) => playSound(e, phonetic.audio)}>
+                        {phonetic.text}
+                      </Typography>
+
+                    </Button>
+                  )
+                })
+              }
+              <Typography color="textSecondary" gutterBottom>
                 {result.meanings.map((meaning, index) => {
                   if (index === result.meanings.length - 1) {
                     return meaning.partOfSpeech;
                   }
                   return meaning.partOfSpeech + " - ";
+                })
+                }
+              </Typography>
+              <Typography className={classes.pos} >
+                {result.meanings.map((meaning, index) => {
+                  // if (index === result.meanings.length - 1) {
+                  //   return meaning.partOfSpeech;
+                  // }
+                  // return meaning.partOfSpeech + " - ";
+                  return <div>
+                    {meaning.definitions.map((definition, index) => {
+                      return <Typography gutterBottom>
+                        <li>{definition.definition}</li>
+
+                        {definition.example && <Typography><em>{" Eg. " + definition.example}</em></Typography>}
+                      </Typography>
+                    })}
+                  </div>
                 })}
               </Typography>
-              <Typography variant="body2" component="p">
+              {/* <Typography variant="body2" component="p">
                 {result.meanings[0].definitions[0].definition}
                 <br />
                 {result.meanings[0].definitions[0].example}
-              </Typography>
-            </CardContent>
+              </Typography> */}
+            </CardContent >
             {/* <CardActions>
               <Button size="small" href={}>Learn More</Button>
             </CardActions> */}
-          </Card>
-        ))}
-    </Container>
+          </Card >
+        ))
+      }
+    </Container >
   );
 }
 

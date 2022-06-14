@@ -4,7 +4,8 @@ import {
   Paper,
   Card,
   CardContent,
-  CardMedia
+  CardMedia,
+  Container,
 } from "@material-ui/core";
 import { Skeleton } from '@material-ui/lab'
 import { makeStyles } from '@material-ui/core/styles';
@@ -41,7 +42,7 @@ export default function DailyWords() {
 
 
   return (
-    <Paper elevation={2} className={classes.paper}>
+    <Container gutterBottom className={classes.paper}>
       <Typography variant="h4" className={classes.heading}>
         Today's Word
       </Typography>
@@ -101,6 +102,6 @@ export default function DailyWords() {
             </CardActions> */}
           </Card>
         ))}
-    </Paper>
+    </Container>
   )
 }
